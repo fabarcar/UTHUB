@@ -16,8 +16,28 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:8888,ht
   .map(s => s.trim())
   .filter(Boolean);
 
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+
+  if (allowedOrigins.includes(origin)) {
+    return true;
+  }
+
+  if (/^https:\/\/.*\.netlify\.app$/i.test(origin)) {
+    return true;
+  }
+
+  return false;
+};
+
 app.use(cors({
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    if (isAllowedOrigin(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin no permitido: ${origin}`));
+    }
+  },
   credentials: true
 }));
 
