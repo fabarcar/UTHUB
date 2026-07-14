@@ -3,7 +3,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 const helmet = require('helmet');
-const xss = require('xss-clean');
 
 dotenv.config();
 
