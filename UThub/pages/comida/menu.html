@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú - UThub</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/comida.css">
+</head>
+<body class="dashboard-page">
+  
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="../../index.html" class="logo">
+        <span class="logo-ut">UT</span><span class="logo-hub">hub</span>
+      </a>
+      
+      <nav class="nav" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="tiendas.html" class="nav-link active">🍔 Comida</a></li>
+          <li><a href="../tutorias/buscar.html" class="nav-link">📚 Tutorías</a></li>
+          <li><a href="../libros/catalogo.html" class="nav-link">📖 Libros</a></li>
+          <li><a href="../servicios/explorar.html" class="nav-link">💼 Servicios</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <a href="carrito.html" class="icon-btn cart-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="badge-notif" id="cart-count">0</span>
+        </a>
+        
+        <div class="user-menu">
+          <button class="user-btn" id="user-menu-btn">
+            <div class="user-avatar">
+              <span id="user-initials"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <nav aria-label="breadcrumb" class="breadcrumb-nav">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="tiendas.html">Tiendas</a></li>
+        <li class="breadcrumb-item active" aria-current="page"></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Tienda Header -->
+      <div class="tienda-detail-header">
+        <div class="tienda-detail-banner"></div>
+        <div class="tienda-detail-info">
+          <div class="tienda-detail-left">
+            <div class="tienda-logo"></div>
+            <div>
+              <h1 class="tienda-detail-name"></h1>
+              <div class="tienda-detail-meta">
+                <div class="rating-large">
+                  <span class="stars"></span>
+                  <span class="rating-value"></span>
+                  <span class="rating-count"></span>
+                </div>
+                <span class="meta-divider"></span>
+                <span class="meta-text"></span>
+                <span class="meta-divider"></span>
+                <span class="meta-text"></span>
+              </div>
+              <p class="tienda-detail-description"></p>
+            </div>
+          </div>
+          <div class="tienda-detail-status">
+            <div class="status-badge status-open">
+              <span class="status-dot"></span>
+            </div>
+            <div class="status-hours"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menú Section -->
+      <div class="menu-container">
+        <div class="menu-sidebar">
+          <div class="menu-categories sticky">
+            <h3 class="sidebar-title">Categorías</h3>
+            <nav class="categories-nav">
+            </nav>
+          </div>
+        </div>
+
+        <div class="menu-content">
+          <div class="productos-grid" id="productos-container"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Carrito Flotante -->
+  <div class="cart-float" id="cart-float" style="display: none;">
+    <div class="cart-float-content">
+      <div class="cart-float-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span id="cart-float-count"></span>
+        <span id="cart-float-total"></span>
+      </div>
+      <a href="carrito.html" class="btn-ver-carrito">Ver Carrito</a>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="/js/config.js"></script>
+  <script src="../../js/protect.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/comida.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      protegerRuta();
+      updateCartDisplay();
+      cargarInfoTienda();
+      cargarProductos();
+    });
+  </script>
+</body>
+</html>
